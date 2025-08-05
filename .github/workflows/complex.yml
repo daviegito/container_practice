@@ -1,0 +1,39 @@
+name: complex
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  job1:
+    name: First job
+    runs-on: ubuntu-latest
+    steps:
+    - name: printing the day
+      run: current_date=$(date +%F) echo "$current_date"
+
+  job2:
+    name: Second job
+    runs-on: windows-latest
+    steps:
+    - name: printing the day
+      run: Get-Date
+
+  job3:
+    name: Third job
+    runs-on: macos-latest
+    steps:
+    - name: printing the day
+      run: current_date=$(date +%F) echo "$current_date"
+
+  job4:
+    name: Fourth job
+    needs: [job1,job2,job3]
+    runs-on: ubuntu-latest
+    steps:
+    - name: printing the day
+      run: current_date=$(date +%F) echo "$current_date"
+
+
+
+
