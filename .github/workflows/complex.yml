@@ -1,38 +1,40 @@
 name: complex
 
-on:
+on: #it could be "on: push" if it meant all branches, which could've been
+  #applied here
   push:
     branches: [ "main" ]
 
 jobs:
   job1:
-    name: First job
+    name: First job #this could have been put inside job1 instead of being its
+    #own tag
     runs-on: ubuntu-latest
     steps:
-    - name: printing the day
-      run: current_date=$(date +%F) echo "$current_date"
+    - name: printing the day #not a necessity
+      run: date
 
   job2:
     name: Second job
     runs-on: windows-latest
     steps:
     - name: printing the day
-      run: Get-Date
+      run: date
 
   job3:
     name: Third job
     runs-on: macos-latest
     steps:
     - name: printing the day
-      run: current_date=$(date +%F) echo "$current_date"
+      run: date
 
   job4:
     name: Fourth job
-    needs: [job1,job2,job3]
+    needs: [job1,job2,job3] #dependency
     runs-on: ubuntu-latest
     steps:
     - name: printing the day
-      run: current_date=$(date +%F) echo "$current_date"
+      run: date
 
 
 
